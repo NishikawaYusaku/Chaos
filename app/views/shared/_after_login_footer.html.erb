@@ -1,27 +1,23 @@
-<footer>
-  <nav class="navbar navbar-expand-lg bg-body-tertiary">
-    <div class="container-fluid">
-      <div class="collapse navbar-collapse" id="navbarNav">
-        <div class="flex-column mx-auto text-center">
-          <ul class="navbar-nav">
-            <li class="nav-item px-4">
-              <%= link_to "にゅーぶい！とは", pages_about_path, class: "nav-link active" %>
-            </li>
-            <li class="nav-item px-4">
-              <%= link_to "お問い合わせ", "https://docs.google.com/forms/d/e/1FAIpQLSc_RT8RwfRMCixRfXBd9sxB9qgpOWZntDYnoYndnw787_EeaQ/viewform?usp=sf_link", class: "nav-link active",target: :_blank, rel: "noopener noreferrer"%>
-            </li>
-            <li class="nav-item px-4">
-              <%= link_to "利用規約", pages_terms_path, class: "nav-link active" %>
-            </li>
-            <li class="nav-item px-4">
-              <%= link_to "プライバシーポリシー", pages_privacy_policy_path, class: "nav-link active" %>
-            </li>
-          </ul>
-          <div class="pt-4 pb-3">
-            <small>© 2024 NewVtuber</small>
-          </div>
-        </div>
-      </div>
+<div class="container-fluid text-center" style="background-color: #b7ffdb;">
+  <div class="row pt-4">
+    <div class="col-xl-2"></div>
+    <div class="col-xl">
+      <%= link_to "にゅーぶい！とは", pages_about_path, class: "link-dark text-decoration-none" %>
     </div>
-  </nav>
-</footer>
+    <div class="col-xl">
+      <%= link_to "お問い合わせ", "https://docs.google.com/forms/d/e/1FAIpQLSc_RT8RwfRMCixRfXBd9sxB9qgpOWZntDYnoYndnw787_EeaQ/viewform?usp=sf_link", class: "link-dark text-decoration-none", target: :_blank, rel: "noopener noreferrer"%>
+    </div>
+    <div class="col-xl">
+      <%= link_to "利用規約", pages_terms_path, class: "link-dark text-decoration-none" %>
+    </div>
+    <div class="col-xl">
+      <%= link_to "プライバシーポリシー", pages_privacy_policy_path, class: "link-dark text-decoration-none" %>
+    </div>
+    <div class="col-xl-2"></div>
+  </div>
+  <div class="row pt-4 pb-3">
+    <div class="col">
+      <small>© 2024 NewVtuber</small>
+    </div>
+  </div>
+</div>

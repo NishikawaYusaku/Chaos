@@ -1,117 +1,93 @@
 <% content_for(:title, @vtuber.name) %>
 
-<div class="container">
-  <div class="row mb-5 mt-5">
-    <div class="col-lg-10 border mx-auto">
-      <div class="mb-5 mt-5 text-center">
-        <%= image_tag @vtuber.image.url, class: "rounded-circle border border-dark", size: "300x300" %>
-
-        <h1 class="mb-5 mt-3 text-center"><%= @vtuber.name %></h1>
-
-        <div id="favorite_<%= @vtuber.id %>">
-          <%= render 'favorites/favorite', vtuber: @vtuber %>
-        </div>
-
-        <div class="mb-5 mt-5 col-lg-7 mx-auto">
-          <div class="d-flex">
-            <div class="col-lg-6 text-left">
-              デビュー日　　：
-            </div>
-            <div class="col-lg-4">
-              <%= @vtuber.debut_date %>
-            </div>
-          </div>
-        </div>
-
-        <div class="mb-5 mt-5 col-lg-7 mx-auto">
-          <div class="d-flex">
-            <div class="col-lg-6 text-left">
-              性別　　：
-            </div>
-            <div class="col-lg-4">
-              <%= @vtuber.gender %>
-            </div>
-          </div>
-        </div>
-<!--
-        <div class="mb-5 mt-5 col-lg-7 mx-auto">
-          <div class="d-flex">
-            <div class="col-lg-6 text-left">
-              配信サイト　　：
-            </div>
-            <div class="col-lg-4">
-              <% (@vtuber.places).each do |place| %>
-                <% if place.name == "YouTube" %>
-                  <%= link_to place.vtuber_places[0].url do %>
-                    <i class="fa-brands fa-youtube fa-2xl" style="color: #ff0000;"></i>
-                  <% end %>
-                <% else %>
-                  <%= place.name %>
-                <% end %>
-              <% end %>
-            </div>
-          </div>
-        </div>
-        <div class="mb-5 mt-5 col-lg-7 mx-auto">
-          <div class="d-flex">
-            <div class="col-lg-6 text-left">
-              配信ジャンル　　：
-            </div>
-            <div class="col-lg-4">
-              <% (@vtuber.contents).each_with_index do |content, index| %>
-                <%= content.name %>
-                <%= "、" if index < @vtuber.contents.size - 1 %>
-              <% end %>
-            </div>
-          </div>
-        </div>
-
-        <div class="mb-5 mt-5 col-lg-7 mx-auto">
-          <div class="d-flex">
-            <div class="col-lg-6 text-left">
-              好きなこと　　：
-            </div>
-            <div class="col-lg-4">
-              <%= @vtuber.like %>
-            </div>
-          </div>
-        </div>
-
-        <div class="mb-5 mt-5 col-lg-7 mx-auto">
-          <div class="d-flex">
-            <div class="col-lg-6 text-left">
-              嫌いなこと　　：
-            </div>
-            <div class="col-lg-4">
-              <%= @vtuber.unlike %>
-            </div>
-          </div>
-        </div>
-
-        <div class="mb-5 mt-5 col-lg-7 mx-auto">
-          <div class="d-flex">
-            <div class="col-lg-6 text-left">
-              ファンネーム　　：
-            </div>
-            <div class="col-lg-4">
-              <%= @vtuber.fan_name %>
-            </div>
-          </div>
-        </div>
--->
-      <% if @vtuber.name_x.present? %>
-        <div class="mb-5 mt-5 col-lg-12 mx-auto">
-          <a class="twitter-timeline twitter-timeline" data-lang="ja" data-height="700", data-width="500" href="https://twitter.com/<%= @vtuber.name_x %>?ref_src=twsrc%5Etfw">Tweets by <%= @vtuber.name_x %>></a> 
-          <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
-        </div>
-      <% end %>
-      
+<div class="container" style="background-color: #b7ffdb;">
+  <div class="row my-5">
+    <div class="col-xl-6 mt-5 text-center">
+      <%= image_tag @vtuber.image.url, class: "rounded-circle border border-dark", size: "300x300" %>
+    </div>
+    <div class="col-xl-6 d-flex justify-content-center align-items-center flex-column">
+      <div class="display-4 mt-5">
+        <%= @vtuber.name %>
+      </div>
+      <div class="d-flex mt-4">
+        <% (@vtuber.places).each do |place| %>
+          <%= link_to "#{place.name}", place.vtuber_places[0].url, class: "btn btn-danger" %>　
+        <% end %>
+        <% if @vtuber.name_x.present? %>
+          <span class="pt-1">
+            <%= link_to "https://twitter.com/#{@vtuber.name_x}" do %>
+              <%= image_tag "logo-black.png", size: "25x25" %>
+            <% end %>
+          </span>
+        <% end %>
       </div>
     </div>
   </div>
+  
+  <div class="row my-5">
+    <div class="col">
+      <div class="text-center my-5", id="favorite_<%= @vtuber.id %>">
+        <%= render 'favorites/favorite', vtuber: @vtuber %>
+      </div>
+    </div>
+  </div>
+  
+  <div class="row">
+    <% if @vtuber.name_x.present? %>
+      <div class="col-xl mb-5">
+        <a class="twitter-timeline" data-lang="ja" data-height="700", data-width="500" href="https://twitter.com/<%= @vtuber.name_x %>?ref_src=twsrc%5Etfw">Tweets by <%= @vtuber.name_x %>></a> 
+        <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+      </div>
+    <% end %>
 
-  <div class="row mb-5 mt-5">
-    <div class="col-lg-10 border mx-auto">
+    
+    <div class="col-xl">
+      <ul class="list-unstyled">
+        <div class="row justify-content-start">
+          <div class="col-3 ">
+            <li class="text-center">　　　性別：</li>
+          </div>
+          <div class="col-8"><%= @vtuber.gender %></div>
+        </div>
+        <div class="row pt-3 justify-content-start">
+          <div class="col-3">
+            <li class="text-center">デビュー日：</li>
+          </div>
+          <div class="col-8"><%= @vtuber.debut_date %></div>
+        </div>
+        <div class="row pt-3 justify-content-start">
+          <div class="col-3">
+            <li class="text-center">　配信内容：</li>
+          </div>
+          <div class="col-8">
+            <% (@vtuber.contents).each_with_index do |content, index| %>
+              <%= content.name %>
+              <%= "、" if index < @vtuber.contents.size - 1 %>
+            <% end %>
+          </div>
+        </div>
+        <div class="row pt-3 justify-content-start">
+          <div class="col-3">
+            <li class="text-center">好きなこと：</li>
+          </div>
+          <div class="col-8"><%= @vtuber.like %></div>
+        </div>
+        <div class="row pt-3 justify-content-start">
+          <div class="col-3 ">
+            <li class="text-center">嫌いなこと：</li>
+          </div>
+          <div class="col-8"><%= @vtuber.unlike %></div>
+        </div>
+      </ul>
+    </div>
+
+
+  </div>
+</div>
+
+<div class="container">
+  <div class="row my-5">
+    <div class="col border mx-auto mb-5">
       <p class="mt-3", id="js-comment-count">コメント（<%= @vtuber.comments.count %>）</p>
       <% if logged_in? %>
         <%= form_with model: [@vtuber, @comment], url: vtuber_comment_path(@vtuber), method: :post, local: false, id: "js-comment-form" do |f| %>

@@ -2,7 +2,7 @@
 
 <div class="container">
   <div class="row">
-    <div class="d-flex justify-content-center align-middle form-margin">
+    <div class="d-flex justify-content-center align-middle my-5 py-5">
       <%= form_with model: @user, url: user_new_path, local: true do |f| %>
         <%= render 'shared/error_message', object: f.object %>
         <div class="mb-5">
@@ -24,7 +24,7 @@
         </div>
         <div class="mb-5">
           <%= f.check_box :agreement, as: :boolean, checked: false %>
-          <%= link_to "利用規約", pages_terms_path, target: :_blank, rel: "noopener noreferrer" %>と<%= link_to "プライバシーポリシー", pages_privacy_policy_path, target: :_blank, rel: "noopener noreferrer" %>に同意します
+          　<%= link_to "利用規約", pages_terms_path, target: :_blank, rel: "noopener noreferrer" %>と<%= link_to "プライバシーポリシー", pages_privacy_policy_path, target: :_blank, rel: "noopener noreferrer" %>に同意します
         </div>
         <div class="text-center my-5">
           <%= f.submit "登録", class: "btn btn-primary si-form-width" %>

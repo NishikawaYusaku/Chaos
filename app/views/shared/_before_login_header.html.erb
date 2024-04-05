@@ -1,46 +1,44 @@
-<header>
-  <nav class="navbar navbar-expand-lg bg-body-tertiary">
-    <div class="container-fluid">
-      <%= link_to "にゅーぶい！", root_path, class: "navbar-brand" %>
-      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-      </button>
-      <div class="collapse navbar-collapse" id="navbarNav">
-        <div class="flex-column ms-auto">
-          <%= search_form_for @q, url: root_path, class: "d-flex" do |f| %>
-            <%= f.search_field :name_or_gender_or_like_or_unlike_or_places_name_or_contents_name_cont, class: "form-control me-2 h-form-width", placeholder: "名前、性別、配信ジャンルなど" %>
-            <%= f.submit '検索', class: "btn btn-outline-success" %>
-          <% end %>
-          <ul class="navbar-nav pr-5">
-            <li class="nav-item px-5">
-              <a class="nav-link active"href="#">項目1</a>
-            </li>
-            <li class="nav-item px-5">
-              <a class="nav-link active"href="#">項目2</a>
-            </li>
-            <li class="nav-item px-5">
-              <a class="nav-link active"href="#">項目3</a>
-            </li>
-            <li class="nav-item px-5">
-              <a class="nav-link active"href="#">項目4</a>
-            </li>
-            <li class="nav-item px-5">
-              <a class="nav-link active"href="#">項目5</a>
-            </li>
-          </ul>
-        </div>
-        <ul class="navbar-nav ms-auto">
-          <li class="nav-item">
-            <%= link_to "にゅーぶい！とは", pages_about_path, class: "nav-link active" %>
+<nav class="navbar navbar-expand-lg bg-body-tertiary">
+  <div class="container-fluid">
+    <%= link_to "にゅーぶい！", root_path, class: "navbar-brand" %>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNav">
+      <div class="flex-column ms-auto">
+        <%= search_form_for @q, url: root_path, class: "d-flex" do |f| %>
+          <%= f.search_field :name_or_gender_or_like_or_unlike_or_places_name_or_contents_name_cont, class: "form-control me-2 h-form-width", placeholder: "名前、性別、配信ジャンルなど" %>
+          <%= f.submit '検索', class: "btn btn-outline-success" %>
+        <% end %>
+        <ul class="navbar-nav pr-5">
+          <li class="nav-item px-5">
+            <a class="nav-link active"href="#">項目1</a>
           </li>
-          <li class="nav-item">
-            <%= link_to "新規登録", user_new_path, class: "nav-link active" %>
+          <li class="nav-item px-5">
+            <a class="nav-link active"href="#">項目2</a>
           </li>
-          <li class="nav-item">
-            <%= link_to "ログイン", login_path, class: "nav-link active" %>
+          <li class="nav-item px-5">
+            <a class="nav-link active"href="#">項目3</a>
+          </li>
+          <li class="nav-item px-5">
+            <a class="nav-link active"href="#">項目4</a>
+          </li>
+          <li class="nav-item px-5">
+            <a class="nav-link active"href="#">項目5</a>
           </li>
         </ul>
       </div>
+      <ul class="navbar-nav ms-auto">
+        <li class="nav-item">
+          <%= link_to "にゅーぶい！とは", pages_about_path, class: "nav-link active" %>
+        </li>
+        <li class="nav-item">
+          <%= link_to "新規登録", user_new_path, class: "nav-link active" %>
+        </li>
+        <li class="nav-item">
+          <%= link_to "ログイン", login_path, class: "nav-link active" %>
+        </li>
+      </ul>
     </div>
-  </nav>
-</header>
+  </div>
+</nav>
