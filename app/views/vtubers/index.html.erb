@@ -1,25 +1,24 @@
 <div class="container">
-  <div class="row mt-5 mb-5 text-center">
-    <div class="col-12">
-      <% if @vtuber.present? %>
-        <% @vtuber.each_slice(4) do |vtuber_row| %>
-          <div class="d-flex">
-            <% vtuber_row.each do |vtuber| %>
-              <div class="col-md-3 mb-4">
-                <%= link_to show_path(vtuber.id), class: "text-decoration-none" do %>
-                  <%= image_tag vtuber.image.url, class: "rounded-circle border border-dark", size: "250x250" %>
-                  <p class="mt-3 mb-5 fs-1 text-body"><%= vtuber.name %></p>
-                <% end %>
-              </div>
-            <% end %>
-          </div>
-        <% end %>
-      <% else %>
-        いません
+  <div class="row mt-5 text-center">
+    <% if @vtubers.present? %>
+      <% @vtubers.each do |vtuber| %>
+        <div class="col">
+          <%= link_to show_path(vtuber.id), class: "text-decoration-none" do %>
+            <%= image_tag vtuber.image.url, class: "rounded-circle border border-dark", size: "250x250" %>
+            <p class="mb-5 fs-1 text-body"><%= vtuber.name %></p>
+          <% end %>
+        </div>
       <% end %>
-      <div class="col-12 d-flex justify-content-center">
-        <%= paginate @vtuber, theme: 'bootstrap-5' %>
+    <% else %>
+      <div class="col">
+        条件に合うVTuberは登録されていません
       </div>
+    <% end %>
+  </div>
+
+  <div class="row my-5 pb-5">
+    <div class="col d-flex justify-content-center mt-5 pb-5">
+      <%= paginate @vtubers, theme: 'bootstrap-5' %>
     </div>
   </div>
 </div>

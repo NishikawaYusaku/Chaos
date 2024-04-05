@@ -1,7 +1,7 @@
 <div class="container">
   <div class="row">
     <div class="col d-flex justify-content-center my-5 py-5">
-      <%= form_with model: @vtuber, url: new_path, local: true, id: "new_create" do |f| %>
+      <%= form_with model: @vtuber, url: new_path, local: true, id: "content_setting" do |f| %>
         <%= render 'shared/error_message', object: f.object %>
         <div class="mb-5">
           <%= f.label :name, "VTuberのお名前", class: "form-label" %><small class="text-danger fw-semibold">（必須）</small>
@@ -63,8 +63,10 @@
           <%= f.file_field :image, class: "form-control" %>
           <div id="previews"></div>
         </div>
-        <div class="text-center mb-5">
-          <%= f.submit "登録", class: "btn btn-primary si-form-width" %>
+        
+        <div class="text-center mb-5 pt-5">
+          <%= link_to "やめる", root_path, class: "btn btn-secondary mx-4" %>
+          <%= f.submit "登録", class: "btn btn-primary mx-4" %>
         </div>
       <% end %>
     </div>
