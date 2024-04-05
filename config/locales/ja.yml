@@ -8,8 +8,11 @@ ja:
         name: ユーザー名
         agreement: 利用規約とプライバシーポリシー
       vtuber:
-        name: VTuberの名前
+        name: VTuberのお名前
         name_x: Xのユーザー
+      vtuber_places: 
+        place: 配信サイト
+        url: 選択した配信サイトのURL
     errors:
       models:
         user:
@@ -17,6 +20,12 @@ ja:
             agreement:
               format: '%{attribute}%{message}'
               accepted: に同意してください
+        vtuber_place:
+          attributes:
+            url:
+              format: '%{attribute}%{message}'
+              blank: を指定してください。
+
   views:
     pagination:
       first: <i class="fas fa-angle-double-left"></i>
