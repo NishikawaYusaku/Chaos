@@ -11,6 +11,6 @@ class ApplicationController < ActionController::Base
 
   def set_search
     @q = Vtuber.ransack(params[:q])
-    @vtuber = @q.result(distinct: true).order(:id).page(params[:page]).per(20)
+    @vtubers = @q.result(distinct: true).order(:id).page(params[:page]).per(20)
   end
 end

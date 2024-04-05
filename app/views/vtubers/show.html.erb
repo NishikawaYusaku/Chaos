@@ -11,7 +11,7 @@
       </div>
       <div class="d-flex mt-4">
         <% (@vtuber.places).each do |place| %>
-          <%= link_to "#{place.name}", place.vtuber_places[0].url, class: "btn btn-danger" %>　
+          <%= link_to "#{place.name}", place.vtuber_places.last.url, class: "btn btn-danger" %>　
         <% end %>
         <% if @vtuber.name_x.present? %>
           <span class="pt-1">

@@ -1,10 +1,10 @@
-<div class="container ">
+<div class="container">
   <div class="row">
-    <div class="d-flex justify-content-center align-middle my-5 py-5 mb-5">
-      <%= form_with model: @vtuber, url: edit_path(@vtuber), local: true do |f| %>
+    <div class="col d-flex justify-content-center my-5 py-5">
+      <%= form_with model: @vtuber, url: edit_path(@vtuber), local: true, id: "content_setting" do |f| %>
         <%= render 'shared/error_message', object: f.object %>
         <div class="mb-5">
-          <%= f.label :name, "Vtuberのお名前", class: "form-label" %>
+          <%= f.label :name, "VTuberのお名前", class: "form-label" %><small class="text-danger fw-semibold">（必須）</small>
           <%= f.text_field :name, class: "form-control " %>
         </div>
         <div class="mb-5">
@@ -16,49 +16,74 @@
         </div>
         <div class="mb-5">
           <%= f.label :gender, "性別", class: "form-label" %>
-          <%= f.radio_button :gender, "男" %>男
-          <%= f.radio_button :gender, "女" %>女
+          <div>
+          <%= f.radio_button :gender, "男性" %>男性　　
+          <%= f.radio_button :gender, "女性" %>女性　　
           <%= f.radio_button :gender, "その他" %>その他
         </div>
+        </div>
         <div class="mb-5">
-          <%= f.label :debut_date, "デビュー日（初配信日）", class: "form-label" %>
+          <%= f.label :debut_date, "デビュー日", class: "form-label" %>
           <%= f.date_field :debut_date, class: "form-control" %>
         </div>
-<!--
-        <div class="mb-5">
-          <%= f.label :place, "配信サイト", class: "form-label" %>
-          <div class="input-group">
-            <%= f.collection_select(:place_ids, Place.all, :id, :name, {prompt: "選択"}, {class: "btn btn-outline-secondary"} ) %>
-            <%= f.text_field :url, class: "form-control", placeholder: "選択した配信サイトのURL" %>
+        <%= f.fields_for :vtuber_places do |place_fields| %>
+          <div class="mb-5">
+            <%= place_fields.label :place_id, "配信サイト", class: "form-label" %><small class="text-danger fw-semibold">（必須）</small>
+            <div class="input-group">
+              <%= place_fields.collection_select(:place_id, Place.all, :id, :name, {prompt: "選択"}, {class: "btn btn-outline-secondary"} ) %>
+              <%= place_fields.text_field :url, class: "form-control", placeholder: "選択した配信サイトのURL" %>
+            </div>
           </div>
-        </div>
+        <% end %>
         <div class="mb-5">
           <%= f.label :content, "配信ジャンル（複数選択可能）", class: "form-label" %>
           <div>
-          <%= f.collection_check_boxes(:content_ids, Content.all, :id, :name) %>
+          <%= f.collection_check_boxes(:content_ids, Content.all, :id, :name) do |c| %>
+            <%= c.label { c.check_box + c.text } %>　　
+          <% end %>
           </div>
         </div>
+
         <div class="mb-5">
           <%= f.label :like, "好きなこと", class: "form-label" %>
-          <%= f.text_area :like, class: "form-control " %>
+          <%= f.text_field :like, class: "form-control" %>
         </div>
         <div class="mb-5">
           <%= f.label :unlike, "嫌いなこと", class: "form-label" %>
-          <%= f.text_area :unlike, class: "form-control " %>
+          <%= f.text_field :unlike, class: "form-control" %>
         </div>
+<!--
         <div class="mb-5">
           <%= f.label :fan_name, "ファンネーム", class: "form-label" %>
           <%= f.text_field :fan_name, class: "form-control " %>
         </div>
 -->
         <div class="mb-5">
-          <%= f.label :image, "アイコン画像", class: "form-label" %>
+          <%= f.label :image, "アイコン", class: "form-label" %>
           <%= f.file_field :image, class: "form-control" %>
+          <div id="current_image">
+            <!-- <img class="aaa mt-3 rounded-circle border border-dark" src="app/assets/images/default.png", width="250", height="250" > -->
+            <%= image_tag @vtuber.image.url, class: "mt-3 rounded-circle border border-dark", size: "250x250" %>
+          </div>
+          <div id="previews"></div>
         </div>
-        <div class="text-center mb-5">
-          <%= f.submit "保存", class: "btn btn-primary si-form-width" %>
+        <div class="text-center mb-5 pt-5">
+          <%= link_to "やめる", root_path, class: "btn btn-secondary mx-4" %>
+          <%= f.submit "更新", class: "btn btn-primary mx-4" %>
         </div>
       <% end %>
     </div>
   </div>
 </div>
+
+
+
+<!-- カラム追加 -->
+<!-- 個人or企業 -->
+<!-- ? 誕生日 -->
+<!-- ? 推しマーク -->
+<!-- 身体的特徴（髪色、目色・・・） -->
+
+<!-- カラム削除 -->
+
+<!-- tag追加、frequency追加は後回しにしました -->
