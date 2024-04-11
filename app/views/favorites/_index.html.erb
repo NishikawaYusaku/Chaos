@@ -2,8 +2,17 @@
   <div class="d-flex border-top">
     <div class="col-lg-8">
       <div class="text-left mt-2 mb-2">
-        <%= image_tag v.image.url, class: "rounded-circle border border-dark", size: "50x50" %>
-        　<%= v.name %>
+        <% case v.gender %>
+        <% when "男性" then %>
+          <%= image_tag v.image.url, class: "rounded-circle", size: "50x50", style: "border: solid; border-color: #0000ff;" %>
+        <% when "女性" then %>
+          <%= image_tag v.image.url, class: "rounded-circle", size: "50x50", style: "border: solid; border-color: #ff0000;" %>
+        <% when "その他" then %>
+          <%= image_tag v.image.url, class: "rounded-circle", size: "50x50", style: "border: solid; border-color: #ffff00;" %>
+        <% end %>
+        <span class="mx-4">
+          <%= v.name %>
+        </span>
       </div>
     </div>
     <div class="col-lg-4">

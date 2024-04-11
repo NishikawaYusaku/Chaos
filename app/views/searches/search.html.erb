@@ -1,11 +1,6 @@
-<div class="container">
-  <div class="row mt-5">
-    <% if @vtubers.present? %>
-      <% if @tag_name %>
-        <p class="mb-5">タグ「<%= @tag_name %>」の検索結果：　<%= @vtubers.count %></p>
-      <% end %>
+<% if @vtubers.present? %>
       <% @vtubers.each do |vtuber| %>
-        <div class="col text-center">
+        <div class="col">
           <%= link_to show_path(vtuber.id), class: "text-decoration-none" do %>
             <% case vtuber.gender %>
             <% when "男性" then %>
@@ -21,14 +16,6 @@
       <% end %>
     <% else %>
       <div class="col">
-        登録されていません
+        条件に合うVTuberは登録されていません
       </div>
     <% end %>
-  </div>
-  
-  <div class="row my-5 pb-5">
-    <div class="col d-flex justify-content-center mt-5 pb-5">
-      <%= paginate @vtubers, theme: 'bootstrap-5' %>
-    </div>
-  </div>
-</div>

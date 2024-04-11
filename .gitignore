@@ -33,3 +33,7 @@
 .env
 
 /config/credentials.yml.enc
+/config/database.yml
+
+.DS_Store
+app/.DS_Store
