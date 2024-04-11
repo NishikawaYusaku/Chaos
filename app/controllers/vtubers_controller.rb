@@ -27,9 +27,11 @@ class VtubersController < ApplicationController
 
   def create
     @vtuber = current_user.vtubers.new(vtuber_params)
-    
+    @tag = params[:vtuber][:tag]
     if @vtuber.save
       VtuberUser.new(user_id: current_user.id, vtuber_id: @vtuber.id).save
+      tag_list = params[:vtuber][:tag].delete(' ').delete('　').split('、')
+      @vtuber.save_tags(tag_list)
       redirect_to show_path(@vtuber)
       flash[:success] = "VTuberを登録しました"
     else
@@ -40,13 +42,16 @@ class VtubersController < ApplicationController
 
   def edit
     @vtuber = Vtuber.find_by(id: params[:id])
+    @tag = @vtuber.tags.pluck(:name).join('、')
   end
 
   def update
     @vtuber = Vtuber.find(params[:id])
-    # binding.pry
+    @tag = params[:vtuber][:tag]
     if @vtuber.update(vtuber_params)
       VtuberUser.new(user_id: current_user.id, vtuber_id: @vtuber.id).save
+      tag_list = params[:vtuber][:tag].delete(' ').delete('　').split('、')
+      @vtuber.save_tags(tag_list)
       redirect_to show_path(@vtuber)
       flash[:success] = "VTuberを更新しました"
     else
@@ -64,8 +69,7 @@ class VtubersController < ApplicationController
   end
 
   def vtuber_params
-    # params.require(:vtuber).permit( :name, :image, :debut_date, :fan_name, :like, :unlike, :gender, :name_x, content_ids: [] )
-    params.require(:vtuber).permit(:name, :image, :debut_date, :fan_name, :like, :unlike, :gender, :name_x, content_ids: [], vtuber_places_attributes: [:place_id, :url, :_destroy, :id])
+    params.require(:vtuber).permit(:name, :name_x, :gender, :birthday, :debut_date, :like, :unlike, :image, vtuber_places_attributes: [:place_id, :url, :_destroy, :id], content_ids: [])
   end
 end
 

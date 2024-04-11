@@ -1,6 +1,8 @@
 Rails.application.routes.draw do
   root 'vtubers#index'
 
+  # get "search", to: "searches#search"
+
   get 'show/:id', to: 'vtubers#show', as: :show
 
   post 'show/:id/favorite', to: 'favorites#create', as: :vtuber_favorite
@@ -45,6 +47,5 @@ Rails.application.routes.draw do
   get 'pages/about', to: 'pages#about'
   get 'pages/terms', to: 'pages#terms'
   get 'pages/privacy_policy', to: 'pages#privacy_policy'
-
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end
