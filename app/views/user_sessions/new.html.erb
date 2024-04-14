@@ -1,24 +1,28 @@
 <% content_for(:title, "ログイン") %>
 
 <div class="container">
-  <div class="row">
-    <div class="d-flex justify-content-center align-middle mt-5 pt-5">
+  <div class="row justify-content-center">
+    <div class="col-5 my-5 py-5">
       <%= form_with url: login_path, local: true do |f| %>
+      <h3 class="mb-5">ログイン</h3>
         <div class="mb-5">
           <%= f.label :email, "メールアドレス", class: "form-label" %>
-          <%= f.email_field :email, class: "form-control si-form-width" %>
+          <%= f.email_field :email, class: "form-control" %>
         </div>
         <div class="mb-5">
           <%= f.label :password, "パスワード", class: "form-label" %>
           <%= f.password_field :password, class: "form-control " %>
         </div>
-        <div class="text-center mb-4">
-          <%= f.submit "ログイン", class: "btn btn-primary si-form-width" %>
+        <div class="text-center mb-5">
+          <%= f.submit "ログイン", class: "btn btn-primary px-5" %>
+        </div>
+        <div class="text-center mb-3">
+          <%= link_to "パスワードを忘れた方はこちらへ", new_password_reset_path, class: "text-center" %>
+        </div>
+        <div class="text-center mb-5">
+          <%= link_to "アカウントをお持ちでない方はこちらへ", user_new_path %>
         </div>
       <% end %>
-    </div>
-    <div class="text-center mb-5">
-      <%= link_to "パスワードを忘れた方はこちら", new_password_reset_path, class: "text-center" %>
     </div>
   </div>
 </div>

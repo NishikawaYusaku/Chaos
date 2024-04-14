@@ -2,3 +2,5 @@ id = "<%= @comment.id %>";
 target = document.querySelector(`#comment_${id}`);
 html = "<%= j(render 'comments/edit-form', vtuber: @vtuber, comment: @comment) %>";
 target.innerHTML = html;
+commentBodyElement = target.querySelector(`#comment-body-${id}`);
+commentBodyElement.style.display = 'none';

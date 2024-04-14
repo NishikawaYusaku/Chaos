@@ -122,9 +122,10 @@
         <%= form_with model: [@vtuber, @comment], url: vtuber_comment_path(@vtuber), method: :post, local: false, id: "js-comment-form" do |f| %>
           <%= render 'shared/error_message', object: f.object %>
           <div class="mb-3 mt-3">
-            <%= f.text_area :body, class: "form-control", placeholder: "コメントを入力" %>
+            <%= f.text_area :body, class: "form-control", placeholder: "コメントを入力", id: "comment-clear" %>
           </div>
           <div class="mb-5">
+            <button type="button" class="btn btn-secondary" onclick="clearTextarea()">やめる</button>
             <%= f.submit "投稿", class: "btn btn-primary" %>
           </div>
         <% end %>

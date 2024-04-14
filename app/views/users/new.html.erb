@@ -1,17 +1,18 @@
 <% content_for(:title, "ユーザー登録") %>
 
 <div class="container">
-  <div class="row">
-    <div class="d-flex justify-content-center align-middle my-5 py-5">
+  <div class="row justify-content-center">
+    <div class="col-5 my-5 py-5">
       <%= form_with model: @user, url: user_new_path, local: true do |f| %>
         <%= render 'shared/error_message', object: f.object %>
+        <h3 class="mb-5">ユーザー登録</h3>
         <div class="mb-5">
           <%= f.label :email, "メールアドレス", class: "form-label" %>
-          <%= f.email_field :email, class: "form-control si-form-width" %>
+          <%= f.email_field :email, class: "form-control" %>
         </div>
         <div class="mb-5">
           <%= f.label :password, "パスワード", class: "form-label" %>
-          <div class="mb-1"><small>8文字以上でご設定してください。</small></div>
+          <div class="mb-1"><small>8文字以上で設定してください</small></div>
           <%= f.password_field :password, class: "form-control " %>
         </div>
         <div class="mb-5">
@@ -27,7 +28,10 @@
           　<%= link_to "利用規約", pages_terms_path, target: :_blank, rel: "noopener noreferrer" %>と<%= link_to "プライバシーポリシー", pages_privacy_policy_path, target: :_blank, rel: "noopener noreferrer" %>に同意します
         </div>
         <div class="text-center my-5">
-          <%= f.submit "登録", class: "btn btn-primary si-form-width" %>
+          <%= f.submit "登録", class: "btn btn-primary px-5" %>
+        </div>
+        <div class="text-center my-5">
+          <%= link_to "アカウントがある方はこちらへ", login_path %>
         </div>
       <% end %>
     </div>

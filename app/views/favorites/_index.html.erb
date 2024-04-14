@@ -1,7 +1,7 @@
 <% vtuber.each do |v| %>
   <div class="d-flex border-top">
-    <div class="col-lg-8">
-      <div class="text-left mt-2 mb-2">
+    <div class="col-8">
+      <div class="text-left my-2">
         <% case v.gender %>
         <% when "男性" then %>
           <%= image_tag v.image.url, class: "rounded-circle", size: "50x50", style: "border: solid; border-color: #0000ff;" %>
@@ -15,13 +15,15 @@
         </span>
       </div>
     </div>
-    <div class="col-lg-4">
-      <div class="text-center mt-3 mb-3">
-        　　 <%= link_to "見る", show_path(v.id), class: "btn btn-info" %>
-        <%= link_to user_favorite_path(v), method: :delete, remote: true, class: "text-decoration-none link-dark" do %>
-          　<i class="fa-solid fa-heart" aria-hidden="true" style="color: red;"></i>
-        <% end %>
+    <div class="col-3">
+      <div class="text-center my-3">
+        　　　<%= link_to "見る", show_path(v.id), class: "btn btn-info" %>
       </div>
+    </div>
+    <div class="col-1 mt-4">
+      <%= link_to user_favorite_path(v), method: :delete, remote: true, class: "text-decoration-none link-dark" do %>
+        　<i class="fa-solid fa-heart" aria-hidden="true" style="color: red;"></i>
+      <% end %>
     </div>
   </div>
 <% end %>
