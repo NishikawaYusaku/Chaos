@@ -1,16 +1,18 @@
-<nav class="navbar navbar-expand-lg bg-body-tertiary">
+<nav class="navbar navbar-expand-lg" style="background-color: #99ffcc;">
   <div class="container-fluid">
-    <%= link_to "にゅーぶい！", root_path, class: "navbar-brand" %>
-    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+    <%= link_to "にゅーぶい！", root_path, class: "navbar-brand ms-2" %>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation" style="background-color: #ffffff;">
       <span class="navbar-toggler-icon"></span>
     </button>
     <div class="collapse navbar-collapse" id="navbarNav">
       <div class="flex-column ms-auto">
         <%= form_with url: root_path, class: "d-flex", method: :get, local: true do |f| %>
           <%= f.text_field :q, class: "form-control me-2 h-form-width", placeholder: "気になるワードを入力してください" %>
-          <%= f.submit '検索', class: "btn btn-outline-success", name: nil %>
+          <%= f.button type: "submit", class: "btn  btn-light px-4", name: nil do %>
+            <i class="fa-solid fa-magnifying-glass" style="color: #00b36e;"></i>
+          <% end %>
         <% end %>
-        <ul class="navbar-nav pr-5">
+        <!-- <ul class="navbar-nav pr-5">
           <li class="nav-item px-5">
             <a class="nav-link active"href="#">項目1</a>
           </li>
@@ -26,17 +28,44 @@
           <li class="nav-item px-5">
             <a class="nav-link active"href="#">項目5</a>
           </li>
-        </ul>
+        </ul> -->
       </div>
-      <ul class="navbar-nav ms-auto">
-        <li class="nav-item">
-          <%= link_to "にゅーぶい！とは", pages_about_path, class: "nav-link active" %>
+      <ul class="navbar-nav ms-auto mt-2">
+        <li class="nav-item text-center me-2">
+          <%= link_to pages_about_path, class: "nav-link active" do %>
+            <div class="d-none d-xl-block" style="color: #606060;" onmouseover="this.style.color='#ffbf7f';" onmouseout="this.style.color='#606060';">
+              <i class="fa-solid fa-circle-question fa-2xl"></i>
+              <div class="mt-2 small"><small>初めての方へ</small></div>
+            </div>
+            <div class="d-xl-none mt-3" style="color: #606060;" onmouseover="this.style.color='#ffbf7f';" onmouseout="this.style.color='#606060';">
+              <i class="fa-solid fa-circle-question fa-2xl me-3 ms-4"></i>
+              <span>初めての方へ</span>
+            </div>
+          <% end %>
         </li>
-        <li class="nav-item">
-          <%= link_to "新規登録", user_new_path, class: "nav-link active" %>
+        <li class="nav-item text-center me-2">
+          <%= link_to user_new_path, class: "nav-link active" do %>
+            <div class="d-none d-xl-block" style="color: #606060;" onmouseover="this.style.color='#ff7fbf';" onmouseout="this.style.color='#606060';">
+              <i class="fa-solid fa-user-plus fa-2xl"></i>
+              <div class="mt-2 small"><small>新規登録</small></div>
+            </div>
+            <div class="d-xl-none mt-3" style="color: #606060;" onmouseover="this.style.color='#ff7fbf';" onmouseout="this.style.color='#606060';">
+              <i class="fa-solid fa-user-plus fa-2xl me-3"></i>
+              <span>新規登録</span>
+            </div>
+          <% end %>
         </li>
-        <li class="nav-item">
-          <%= link_to "ログイン", login_path, class: "nav-link active" %>
+        <li class="nav-item text-center me-2">
+          <%= link_to login_path, class: "nav-link active" do %>
+            <div class="d-none d-xl-block" style="color: #606060;" onmouseover="this.style.color='#000000';" onmouseout="this.style.color='#606060';">
+              <i class="fa-solid fa-right-to-bracket fa-2xl"></i>
+              <div class="mt-2 small"><small>ログイン</small></div>
+            </div>
+            <div class="d-xl-none my-3" style="color: #606060;" onmouseover="this.style.color='#000000';" onmouseout="this.style.color='#606060';">
+              <i class="fa-solid fa-right-to-bracket fa-2xl me-4"></i>
+              <span>ログイン</span>
+            </div>
+          <% end %>
         </li>
       </ul>
     </div>

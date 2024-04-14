@@ -1,34 +1,24 @@
 <% content_for(:title, "メールアドレスの変更") %>
 
 <div class="container">
-  <div class="row">
-    <div class="col-lg-6 border mx-auto">
-      <h3 class="mt-4">メールアドレスの変更</h3>
-      <div class="mb-5 mt-5">
-        <div class="col-lg-12">
-          <div>現在のメールアドレス</div>
+  <div class="row justify-content-center">
+    <div class="col-5 my-5 py-5">
+      <%= form_with model: @user, url: user_name_path, local: true do |f| %>
+        <%= render 'shared/error_message', object: f.object %>
+        <h3 class="mt-5">メールアドレスの変更</h3>
+        <div class="mt-5">
+          <%= f.label :email, "現在のメールアドレス", class: "form-label" %>
+          <p><%= current_user.email %></p>
         </div>
-        <div class="d-flex">
-          <div class="col-lg-8">
-            <div class="text-left">
-              <%= current_user.email %>
-            </div>
-          </div>
+        <div class="mt-5">
+          <%= f.label :email, "新しいメールアドレス", class: "form-label" %>
+          <%= f.text_field :email, class: "form-control" %>
         </div>
-      </div>
-      
-      <div class="d-flex mb-5">
-        <%= form_with model: @user, url: user_email_path, local: true do |f| %>
-          <%= render 'shared/error_message', object: f.object %>
-          <div class="mb-5">
-            <%= f.label :email, "新しいメールアドレス", class: "form-label" %>
-            <%= f.text_field :email, class: "form-control" %>
-          </div>
-          <div class="text-center">
-            <%= f.submit "保存", class: "btn btn-primary si-form-width" %>
-          </div>
-        <% end %>
-      </div>
+        <div class="text-center mt-5">
+          <%= link_to "戻る", user_path, class: "btn btn-secondary mx-4 px-5" %>
+          <%= f.submit "保存", class: "btn btn-primary px-5 my-4" %>
+        </div>
+      <% end %>
     </div>
   </div>
 </div>

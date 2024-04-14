@@ -1,9 +1,30 @@
 <div id="comment_<%= comment.id %>" class="mb-3 border-top">
-  <p><%= "#{comment.user.name}　　#{l comment.created_at}" %></p>
-  <div>
-    <%= form_with(model:[vtuber, comment], local: false) do |f|%>
-      <%= f.text_area :body, value: comment.body, class: "form-control" %>
-      <%= f.submit "更新", class: "btn btn-primary mt-3" %>
-    <% end%>
-  </div>
+  <p id="comment-info-<%= comment.id %>", class="text-secondary">
+    
+    <% if comment.created_at == comment.updated_at %>
+      <%= "#{comment.user.name}　　#{l comment.updated_at}" %>
+    <% else %>
+      <%= "#{comment.user.name}　　#{l comment.updated_at}（編集済み）" %>
+    <% end %>
+
+    <%= link_to vtuber_comment_delete_path(vtuber, comment), method: :delete, remote: true, class: "text-decoration-none link-dark" do %>
+    　　<i class="fa-solid fa-trash" style="color: #ff0000;"></i>
+    <% end %>
+    <%= link_to vtuber_comment_edit_path(vtuber, comment), remote: true, class: "text-decoration-none link-dark" do %>
+    　<i class="fa-solid fa-pen" style="color: #000000;"></i>
+    <% end %>
+  </p>
+  <p id="comment-body-<%= comment.id %>">
+    <%= comment.body %>
+  </p>
+  <%= form_with(model:[vtuber, comment], local: false) do |f|%>
+    <%= f.text_area :body, value: comment.body, class: "form-control", id: "textarea-comment-#{comment.id}" %>
+    <!-- <input type="hidden" id="originalcomment" value="<%= comment.body %>"></input> -->
+    <div id="comment-button-<%= comment.id %>" class="mt-3">
+      <button data-cancel-id="<%= comment.id %>" type="button" class="btn btn-secondary comment-cancel-button">やめる</button>
+      <%= f.submit "更新", class: "btn btn-primary" %>
+    </div>
+  <% end%>
 </div>
+
+

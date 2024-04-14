@@ -19,4 +19,4 @@
 //= require activestorage
 //= require turbolinks
 //= require preview
-
+//= require comment

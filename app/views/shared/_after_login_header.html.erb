@@ -1,16 +1,18 @@
-<nav class="navbar navbar-expand-lg bg-body-tertiary">
+<nav class="navbar navbar-expand-xl" style="background-color: #99ffcc;">
   <div class="container-fluid">
-    <%= link_to "にゅーぶい！", root_path, class: "navbar-brand" %>
-    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+    <%= link_to "にゅーぶい！", root_path, class: "navbar-brand ms-2" %>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation" style="background-color: #ffffff;">
       <span class="navbar-toggler-icon"></span>
     </button>
     <div class="collapse navbar-collapse" id="navbarNav">
       <div class="flex-column ms-auto">
         <%= form_with url: root_path, class: "d-flex", method: :get, local: true do |f| %>
           <%= f.text_field :q, class: "form-control me-2 h-form-width", placeholder: "気になるワードを入力してください" %>
-          <%= f.submit '検索', class: "btn btn-outline-success", name: nil %>
+          <%= f.button type: "submit", class: "btn btn-light px-4", name: nil do %>
+            <i class="fa-solid fa-magnifying-glass" style="color: #00b36e;"></i>
+          <% end %>
         <% end %>
-        <ul class="navbar-nav pr-5">
+        <!-- <ul class="navbar-nav pr-5">
           <li class="nav-item px-5">
             <a class="nav-link active" href="#">項目1</a>
           </li>
@@ -26,11 +28,20 @@
           <li class="nav-item px-5">
             <a class="nav-link active" href="#">項目5</a>
           </li>
-        </ul>
+        </ul> -->
       </div>
-      <ul class="navbar-nav ms-auto">
-        <li class="nav-item">
-          <button type="button" class="m-button nav-link" data-bs-toggle="modal" data-bs-target="#exampleModal" data-bs-whatever="@mdo">設定</button>
+      <ul class="navbar-nav ms-auto mt-2">
+        <li class="nav-item d-flex justify-content-center me-3">
+          <button type="button" class="nav-link active text-center" data-bs-toggle="modal" data-bs-target="#exampleModal" data-bs-whatever="@mdo">
+            <div class="d-none d-xl-block" style="color: #606060;" onmouseover="this.style.color='#ff7fff';" onmouseout="this.style.color='#606060';">
+              <i class="fa-solid fa-user-pen fa-2xl ms-2"></i>
+              <div class="mt-2 small"><small>設定</small></div>
+            </div>
+            <div class="d-xl-none mt-3 me-4" style="color: #606060;" onmouseover="this.style.color='#ff7fff';" onmouseout="this.style.color='#606060';">
+              <i class="fa-solid fa-user-pen fa-2xl me-2"></i>
+              <span>設定</span>
+            </div>
+          </button>
           <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
             <div class="modal-dialog">
               <div class="modal-content">
@@ -40,30 +51,55 @@
                 </div>
                 <div class="modal-body">
                   <%= form_with url: root_path, local: true do |f| %>
-                      
-                      <div class="mb-3">
-                        <%= f.label :name, "設定するVTuberのお名前", class: "form-label" %>
-                        <%= f.text_field :name, class: "form-control" %>
-                      </div>
-                      <div class="modal-footer">
-                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">やめる</button>
-                        <%= f.submit "設定する", class: "btn btn-primary" %>
-                      </div>
-                    <% end %>
+                    <div class="mb-3">
+                      <%= f.label :name, "設定するVTuberのお名前", class: "form-label" %>
+                      <%= f.text_field :name, class: "form-control" %>
+                    </div>
+                    <div class="modal-footer">
+                      <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">やめる</button>
+                      <%= f.submit "設定する", class: "btn btn-primary" %>
+                    </div>
+                  <% end %>
                 </div>
               </div>
             </div>
           </div>
         </li>
-        <li class="nav-item">
-          <!-- <%= link_to "通知", pages_about_path, class: "nav-link" %> -->
-          <a href="#", class="nav-link disabled">通知</a>
+        <li class="nav-item text-center me-3">
+          <%= link_to "#", class: "nav-link disabled" do %>
+            <div class="d-none d-xl-block">
+              <i class="fa-solid fa-bell fa-2xl"></i>
+              <div class="mt-2 small"><small>通知</small></div>
+            </div>
+            <div class="d-xl-none mt-3 me-4">
+              <i class="fa-solid fa-bell fa-2xl me-3"></i>
+              <span>通知</span>
+            </div>
+          <% end %>
         </li>
-        <li class="nav-item">
-          <%= link_to "マイページ", user_path, class: "nav-link active" %>
+        <li class="nav-item text-center me-2">
+          <%= link_to user_path, class: "nav-link active" do %>
+            <div class="d-none d-xl-block" style="color: #606060;" onmouseover="this.style.color='#7f7fff';" onmouseout="this.style.color='#606060';">
+              <i class="fa-solid fa-user fa-2xl"></i>
+              <div class="mt-2 small"><small>マイページ</small></div>
+            </div>
+            <div class="d-xl-none mt-3" style="color: #606060;" onmouseover="this.style.color='#7f7fff';" onmouseout="this.style.color='#606060';">
+              <i class="fa-solid fa-user fa-2xl me-3"></i>
+              <span>マイページ</span>
+            </div>
+          <% end %>
         </li>
-        <li class="nav-item">
-          <%= link_to "ログアウト", logout_path, class: "nav-link active", method: :delete %>
+        <li class="nav-item text-center me-2">
+          <%= link_to logout_path, class: "nav-link active", method: :delete do %>
+            <div class="d-none d-xl-block" style="color: #606060;" onmouseover="this.style.color='#000000';" onmouseout="this.style.color='#606060';">
+              <i class="fa-solid fa-right-from-bracket fa-2xl"></i>
+              <div class="mt-2 small"><small>ログアウト</small></div>
+            </div>
+            <div class="d-xl-none my-3" style="color: #606060;" onmouseover="this.style.color='#000000';" onmouseout="this.style.color='#606060';">
+              <i class="fa-solid fa-right-from-bracket fa-2xl me-3"></i>
+              <span>ログアウト</span>
+            </div>
+          <% end %>
         </li>
       </ul>
     </div>
