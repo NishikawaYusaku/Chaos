@@ -34,8 +34,6 @@ Rails.application.routes.draw do
   get 'user/email', to: 'users#edit_email'
   patch 'user/email', to: 'users#update_email'
 
-  # get 'user/password', to: 'users#edit_password'
-  # patch 'user/password', to: 'users#update_password'
   resources :password_resets, only: %i[new create edit update]
   if Rails.env.development?
     mount LetterOpenerWeb::Engine, at: "/letter_opener"
@@ -47,5 +45,4 @@ Rails.application.routes.draw do
   get 'pages/about', to: 'pages#about'
   get 'pages/terms', to: 'pages#terms'
   get 'pages/privacy_policy', to: 'pages#privacy_policy'
-  # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end

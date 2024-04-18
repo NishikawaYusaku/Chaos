@@ -9,6 +9,8 @@
           <%= image_tag v.image.url, class: "rounded-circle", size: "50x50", style: "border: solid; border-color: #ff0000;" %>
         <% when "その他" then %>
           <%= image_tag v.image.url, class: "rounded-circle", size: "50x50", style: "border: solid; border-color: #ffff00;" %>
+        <% when nil then %>
+          <%= image_tag v.image.url, class: "rounded-circle border border-black", size: "50x50" %>
         <% end %>
         <span class="mx-4">
           <%= v.name %>

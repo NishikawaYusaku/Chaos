@@ -1,4 +1,5 @@
 <% content_for(:title, @vtuber.name) %>
+<% assign_meta_tags title: @vtuber.name, image: @vtuber.image.url %>
 
 <div class="container" style="background-color: #b7ffdb;">
   <div class="row my-5">
@@ -10,6 +11,8 @@
         <%= image_tag @vtuber.image.url, class: "rounded-circle", size: "300x300", style: "border: solid; border-color: #ff0000;" %>
       <% when "その他" then %>
         <%= image_tag @vtuber.image.url, class: "rounded-circle", size: "300x300", style: "border: solid; border-color: #ffff00;" %>
+      <% when nil then %>
+        <%= image_tag @vtuber.image.url, class: "rounded-circle border border-black", size: "300x300" %>
       <% end %>
     </div>
     <div class="col-xl-6 d-flex justify-content-center align-items-center flex-column">

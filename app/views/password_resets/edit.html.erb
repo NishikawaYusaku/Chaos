@@ -8,11 +8,13 @@
         <div class="mt-5">
           <%= f.label :password, "新しいパスワード" %>
           <div class="mb-1"><small>8文字以上で設定してください</small></div>
-          <%= f.password_field :password, class: 'form-control' %>
+          <%= f.password_field :password, class: 'form-control', id: "userchangepass" %>
+          <input type="checkbox" class="mt-2" onChange="document.getElementById('userchangepass').type = (this.checked) ? 'text' : 'password';">　パスワードを表示する
         </div>
         <div class="mt-5">
           <%= f.label :password_confirmation, "新しいパスワード（確認用）" %>
-          <%= f.password_field :password_confirmation, class: 'form-control' %>
+          <%= f.password_field :password_confirmation, class: 'form-control', id: "userchangepassconfirmation" %>
+          <input type="checkbox" class="mt-2" onChange="document.getElementById('userchangepassconfirmation').type = (this.checked) ? 'text' : 'password';">　パスワードを表示する
         </div>
         <div class="text-center mt-5">
           <%= link_to "戻る", login_path, class: "btn btn-secondary mx-4 px-5" %>

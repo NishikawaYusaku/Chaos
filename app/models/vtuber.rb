@@ -28,7 +28,7 @@ class Vtuber < ApplicationRecord
   has_many :comments, dependent: :destroy
 
   validates :name, uniqueness: true, presence: true
-  # validates :name_x, uniqueness: true, if: -> { new_record? || changes[:name_x] }
+  validates :name_x, uniqueness: true, if: -> { new_record? || changes[:name_x] }, allow_blank: true
 
   accepts_nested_attributes_for :vtuber_places, allow_destroy: true
 

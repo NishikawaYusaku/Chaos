@@ -14,6 +14,8 @@
               <%= image_tag vtuber.image.url, class: "rounded-circle", size: "250x250", style: "border: solid; border-color: #ff0000;" %>
             <% when "その他" then %>
               <%= image_tag vtuber.image.url, class: "rounded-circle", size: "250x250", style: "border: solid; border-color: #ffff00;" %>
+            <% when nil then %>
+              <%= image_tag vtuber.image.url, class: "rounded-circle border border-black", size: "250x250" %>
             <% end %>
             <p class="mb-5 fs-1 text-body"><%= vtuber.name %></p>
           <% end %>

@@ -19,7 +19,6 @@
   </p>
   <%= form_with(model:[vtuber, comment], local: false) do |f|%>
     <%= f.text_area :body, value: comment.body, class: "form-control", id: "textarea-comment-#{comment.id}" %>
-    <!-- <input type="hidden" id="originalcomment" value="<%= comment.body %>"></input> -->
     <div id="comment-button-<%= comment.id %>" class="mt-3">
       <button data-cancel-id="<%= comment.id %>" type="button" class="btn btn-secondary comment-cancel-button">やめる</button>
       <%= f.submit "更新", class: "btn btn-primary" %>

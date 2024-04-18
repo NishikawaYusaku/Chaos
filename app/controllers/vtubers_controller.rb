@@ -62,23 +62,13 @@ class VtubersController < ApplicationController
 
   private
 
-  def youtube
-    require 'google/apis/youtube_v3'
-    @youtube = Google::Apis::YoutubeV3::YouTubeService.new
-    @youtube.key = ENV['GOOGLE_API_KEY']
-  end
+  # def youtube
+  #   require 'google/apis/youtube_v3'
+  #   @youtube = Google::Apis::YoutubeV3::YouTubeService.new
+  #   @youtube.key = ENV['GOOGLE_API_KEY']
+  # end
 
   def vtuber_params
     params.require(:vtuber).permit(:name, :name_x, :gender, :birthday, :debut_date, :like, :unlike, :image, vtuber_places_attributes: [:place_id, :url, :_destroy, :id], content_ids: [])
   end
 end
-
-
-=begin
-@_runteq_
-UCwjx6ZG4pwCvAPSozYEWymA
-=end
-
-=begin
-https://www.youtube.com/@_runteq_
-=end
