@@ -34,29 +34,6 @@ class UsersController < ApplicationController
       render :edit_name
     end
   end
-=begin
-  def edit_password
-    @user.crypted_password = ""
-  end
-
-  def update_password
-    binding.pry
-    if @user.valid_password?(params[:user][:password_current])
-      if (params[:user][:password] == params[:user][:password_confirmation])
-        # @user.crypted_password = params[:user][:password]
-        @user.update(aaa)
-        redirect_to user_path
-        flash[:success] = "パスワードを変更しました"
-      else
-        flash.now[:danger] = "新しいパスワードが一致しません"
-        render :edit_password
-      end
-    else
-      flash.now[:danger] = "現在のパスワードが間違っています"
-      render :edit_password
-    end
-  end
-=end
 
   def edit_name
     @user.name = ""

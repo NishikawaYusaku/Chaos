@@ -13,11 +13,13 @@
         <div class="mb-5">
           <%= f.label :password, "パスワード", class: "form-label" %>
           <div class="mb-1"><small>8文字以上で設定してください</small></div>
-          <%= f.password_field :password, class: "form-control " %>
+          <%= f.password_field :password, class: "form-control", id: "usernewpass" %>
+          <input type="checkbox" class="mt-2" onChange="document.getElementById('usernewpass').type = (this.checked) ? 'text' : 'password';">　パスワードを表示する
         </div>
         <div class="mb-5">
           <%= f.label :password_confirmation, "パスワード（確認用）", class: "form-label" %>
-          <%= f.password_field :password_confirmation, class: "form-control " %>
+          <%= f.password_field :password_confirmation, class: "form-control", id: "usernewpassconfirmation" %>
+          <input type="checkbox" class="mt-2" onChange="document.getElementById('usernewpassconfirmation').type = (this.checked) ? 'text' : 'password';">　パスワードを表示する
         </div>
         <div class="mb-5">
           <%= f.label :name, "ユーザー名", class: "form-label" %>

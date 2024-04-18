@@ -11,7 +11,8 @@
         </div>
         <div class="mb-5">
           <%= f.label :password, "パスワード", class: "form-label" %>
-          <%= f.password_field :password, class: "form-control " %>
+          <%= f.password_field :password, class: "form-control", id: "userloginpass" %>
+          <input type="checkbox" class="mt-2" onChange="document.getElementById('userloginpass').type = (this.checked) ? 'text' : 'password';">　パスワードを表示する
         </div>
         <div class="text-center mb-5">
           <%= f.submit "ログイン", class: "btn btn-primary px-5" %>
