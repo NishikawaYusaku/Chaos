@@ -10,10 +10,10 @@
       </span>
       
       <% if logged_in? && (comment.user.id == current_user.id) %>
-        <%= link_to vtuber_comment_delete_path(vtuber, comment), method: :delete, remote: true, class: "text-decoration-none link-dark" do %>
+        <%= link_to vtuber_comment_path(vtuber, comment), method: :delete, remote: true, class: "text-decoration-none link-dark" do %>
         　　<i class="fa-solid fa-trash" style="color: #ff0000;"></i>
         <% end %>
-        <%= link_to vtuber_comment_edit_path(vtuber, comment), remote: true, class: "text-decoration-none link-dark" do %>
+        <%= link_to edit_vtuber_comment_path(vtuber, comment), remote: true, class: "text-decoration-none link-dark" do %>
         　<i class="fa-solid fa-pen" style="color: #000000;"></i>
         <% end %>
       <% end %>

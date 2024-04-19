@@ -37,3 +37,5 @@
 
 .DS_Store
 app/.DS_Store
+
+public/sitemap.xml.gz

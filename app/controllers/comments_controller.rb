@@ -20,11 +20,11 @@ class CommentsController < ApplicationController
   private
 
   def set_vtuber
-    @vtuber = Vtuber.find(params[:id])
+    @vtuber = Vtuber.find(params[:vtuber_id])
   end
 
   def set_comment
-    @comment = Comment.find(params[:format])
+    @comment = Comment.find(params[:id])
   end
 
   def comment_params

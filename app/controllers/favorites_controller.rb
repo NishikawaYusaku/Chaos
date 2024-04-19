@@ -1,5 +1,5 @@
 class FavoritesController < ApplicationController
-  before_action :set_vtuber
+  before_action :set_vtuber, only: %i[create destroy_vtuber]
   
   def create
     @favorite = Favorite.new(user_id: current_user.id, vtuber_id: @vtuber.id)
@@ -12,6 +12,7 @@ class FavoritesController < ApplicationController
   end
 
   def destroy_user
+    @vtuber = Vtuber.find(params[:format])
     @favorite = Favorite.find_by(user_id: current_user.id, vtuber_id: @vtuber.id)
     @vtuber = current_user.favorite_vtubers
     @favorite.destroy
@@ -20,6 +21,6 @@ class FavoritesController < ApplicationController
   private
 
   def set_vtuber
-    @vtuber = Vtuber.find(params[:id])
+    @vtuber = Vtuber.find(params[:vtuber_id])
   end
 end
