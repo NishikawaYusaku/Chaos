@@ -32,7 +32,7 @@ class VtubersController < ApplicationController
       VtuberUser.new(user_id: current_user.id, vtuber_id: @vtuber.id).save
       tag_list = params[:vtuber][:tag].delete(' ').delete('　').split('、')
       @vtuber.save_tags(tag_list)
-      redirect_to show_path(@vtuber)
+      redirect_to vtuber_path(@vtuber)
       flash[:success] = "VTuberを登録しました"
     else
       flash.now[:danger] = "VTuberを登録できませんでした"
@@ -52,7 +52,7 @@ class VtubersController < ApplicationController
       VtuberUser.new(user_id: current_user.id, vtuber_id: @vtuber.id).save
       tag_list = params[:vtuber][:tag].delete(' ').delete('　').split('、')
       @vtuber.save_tags(tag_list)
-      redirect_to show_path(@vtuber)
+      redirect_to vtuber_path(@vtuber)
       flash[:success] = "VTuberを更新しました"
     else
       flash.now[:danger] = "VTuberを更新できませんでした"

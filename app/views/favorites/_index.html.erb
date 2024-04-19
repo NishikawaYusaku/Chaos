@@ -19,11 +19,11 @@
     </div>
     <div class="col-3">
       <div class="text-center my-3">
-        　　　<%= link_to "見る", show_path(v.id), class: "btn btn-info" %>
+        　　　<%= link_to "見る", vtuber_path(v.id), class: "btn btn-info" %>
       </div>
     </div>
     <div class="col-1 mt-4">
-      <%= link_to user_favorite_path(v), method: :delete, remote: true, class: "text-decoration-none link-dark" do %>
+      <%= link_to favorite_user_path(v), method: :delete, remote: true, class: "text-decoration-none link-dark" do %>
         　<i class="fa-solid fa-heart" aria-hidden="true" style="color: red;"></i>
       <% end %>
     </div>

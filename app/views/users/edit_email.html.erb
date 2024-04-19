@@ -3,7 +3,7 @@
 <div class="container">
   <div class="row justify-content-center">
     <div class="col-5 my-5 py-5">
-      <%= form_with model: @user, url: user_name_path, local: true do |f| %>
+      <%= form_with model: @user, url: email_user_path, local: true do |f| %>
         <%= render 'shared/error_message', object: f.object %>
         <h3 class="mt-5">メールアドレスの変更</h3>
         <div class="mt-5">

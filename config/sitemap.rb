@@ -26,12 +26,12 @@ SitemapGenerator::Sitemap.create do
   #   end
 
   add user_path
-  add pages_about_path
-  add pages_terms_path
-  add pages_privacy_policy_path
+  add about_pages_path
+  add terms_pages_path
+  add privacy_policy_pages_path
 
   Vtuber.find_each do |vtuber|
-    add show_path(vtuber.id), lastmod: vtuber.updated_at
+    add vtuber_path(vtuber.id), lastmod: vtuber.updated_at
   end
   
 end
