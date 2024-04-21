@@ -25,7 +25,6 @@ SitemapGenerator::Sitemap.create do
   #     add article_path(article), :lastmod => article.updated_at
   #   end
 
-  add user_path
   add about_pages_path
   add terms_pages_path
   add privacy_policy_pages_path
