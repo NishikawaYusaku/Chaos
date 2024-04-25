@@ -50,10 +50,10 @@
                   <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
-                  <%= form_with url: root_path, local: true do |f| %>
+                  <%= form_with url: '/vtubers/name_input', local: true do |f| %>
                     <div class="mb-3">
                       <%= f.label :name, "設定するVTuberのお名前", class: "form-label" %>
-                      <%= f.text_field :name, class: "form-control" %>
+                      <%= f.text_field :name, class: "form-control list-unstyled", id: "name-setting" %>
                     </div>
                     <div class="modal-footer">
                       <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">やめる</button>

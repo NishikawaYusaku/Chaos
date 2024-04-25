@@ -10,6 +10,12 @@ class VtubersController < ApplicationController
     @comments = @vtuber.comments
   end
 
+  def autocomplete_names
+    term = params[:term]
+    names = Vtuber.where('name LIKE ?', "%#{term}%").pluck(:name)
+    render json: names
+  end
+
   def name_input
     @vtuber = Vtuber.find_by(name: params[:name])
 

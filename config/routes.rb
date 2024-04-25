@@ -7,7 +7,8 @@ Rails.application.routes.draw do
   post 'login', to: 'user_sessions#create'
   delete 'logout', to: 'user_sessions#destroy'
 
-  post '/', to: 'vtubers#name_input'
+  get '/vtubers/autocomplete_names', to: 'vtubers#autocomplete_names'
+  post '/vtubers/name_input', to: 'vtubers#name_input'
 
   resources :vtubers, only: %i[new create show edit update] do
     post 'favorite', to: 'favorites#create'
