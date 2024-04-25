@@ -15,3 +15,25 @@
   box-sizing: border-box;
   /* ↑ヘッダーやフッターを含むすべての要素の高さ＝min-height:100vhになるように指定 */
 }
+
+ul.ui-autocomplete {
+  position: absolute;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  border: solid 1px #999;
+  cursor: default;
+  z-index: 1000000000;
+  li {
+    background-color: #FFF;
+    border-top: solid 1px #DDD;
+    margin: 0;
+    padding: 2px 15px;
+    color: #000;
+    display: block;
+    padding: 3px;
+  }
+  li:hover, li:focus {
+    background-color: #99ffcc;
+  }
+}

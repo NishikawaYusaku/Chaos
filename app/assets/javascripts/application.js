@@ -14,9 +14,20 @@
 //= require jquery3
 //= require popper
 //= require bootstrap-sprockets
-
+//= require jquery-ui
 //= require rails-ujs
 //= require activestorage
 //= require turbolinks
 //= require preview
 //= require comment
+
+$(document).on('turbolinks:load', function() {
+  $('#name-setting').autocomplete({
+    source: '/vtubers/autocomplete_names',
+    minLength: 2,
+    open: function() {
+      // サジェストボックスの幅を設定
+      $(this).autocomplete('widget').css('width', '14%'); // 幅を適当なサイズに設定
+    }
+  });
+});
