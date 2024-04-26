@@ -25,9 +25,9 @@ $(document).on('turbolinks:load', function() {
   $('#name-setting').autocomplete({
     source: '/vtubers/autocomplete_names',
     minLength: 2,
-    open: function() {
-      // サジェストボックスの幅を設定
-      $(this).autocomplete('widget').css('width', '14%'); // 幅を適当なサイズに設定
-    }
+    // open: function() {
+    //   // サジェストボックスの幅を設定
+    //   $(this).autocomplete('widget').css('width', '14%'); // 幅を適当なサイズに設定
+    // }
   });
 });

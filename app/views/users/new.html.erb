@@ -2,7 +2,7 @@
 
 <div class="container">
   <div class="row justify-content-center">
-    <div class="col-5 my-5 py-5">
+    <div class="col col-sm-5 my-5 py-5">
       <%= form_with model: @user, url: user_path, local: true do |f| %>
         <%= render 'shared/error_message', object: f.object %>
         <h3 class="mb-5">ユーザー登録</h3>

@@ -2,7 +2,7 @@
 
 <div class="container">
   <div class="row justify-content-center">
-    <div class="col-5 my-5 py-5">
+    <div class="col col-sm-5 my-5 py-5">
       <%= form_with url: password_resets_path, local: true, method: :post do |f| %>
         <h3 class="mt-5">パスワードの変更</h3>
         <p>パスワードを忘れた方はリセットをします。<br>下記のメールアドレス宛に変更のご案内をお送りします。</p>
@@ -17,8 +17,8 @@
           <% end %>
         </div>
         <div class="text-center mt-5">
-          <%= link_to "戻る", user_path, class: "btn btn-secondary mx-4 px-5" %>
-          <%= f.submit "送信", class: "btn btn-primary px-5 my-4" %>
+          <%= link_to "戻る", user_path, class: "btn btn-secondary px-5 me-3" %>
+          <%= f.submit "送信", class: "btn btn-primary px-5 ms-3" %>
         </div>
       <% end %>
     </div>

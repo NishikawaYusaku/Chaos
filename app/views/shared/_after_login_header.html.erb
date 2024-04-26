@@ -5,9 +5,9 @@
       <span class="navbar-toggler-icon"></span>
     </button>
     <div class="collapse navbar-collapse" id="navbarNav">
-      <div class="flex-column ms-auto">
+      <div class="d-none d-xl-block flex-column ms-auto">
         <%= form_with url: root_path, class: "d-flex", method: :get, local: true do |f| %>
-          <%= f.text_field :q, class: "form-control me-2 h-form-width", placeholder: "気になるワードを入力してください" %>
+          <%= f.text_field :q, class: "form-control me-2 h-form-width", placeholder: "気になるワードを入力してください", style: "width: 800px;" %>
           <%= f.button type: "submit", class: "btn btn-light px-4", name: nil do %>
             <i class="fa-solid fa-magnifying-glass" style="color: #00b36e;"></i>
           <% end %>
@@ -29,6 +29,14 @@
             <a class="nav-link active" href="#">項目5</a>
           </li>
         </ul> -->
+      </div>
+      <div class="d-xl-none flex-column ms-auto">
+        <%= form_with url: root_path, class: "d-flex mt-4", method: :get, local: true do |f| %>
+          <%= f.text_field :q, class: "form-control me-2 ", placeholder: "気になるワードを入力してください" %>
+          <%= f.button type: "submit", class: "btn btn-light px-4", name: nil do %>
+            <i class="fa-solid fa-magnifying-glass" style="color: #00b36e;"></i>
+          <% end %>
+        <% end %>
       </div>
       <ul class="navbar-nav ms-auto mt-2">
         <li class="nav-item d-flex justify-content-center me-3">
