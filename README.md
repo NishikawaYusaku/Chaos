@@ -60,9 +60,7 @@ VTuberという文化が登場してから7年ほどが経過し、現在では�
 * Fly.io
 
 ## 画面遷移図
-未更新
-Figma：https://www.figma.com/file/C3glur5TElWMfdBr5OtMs3/%E5%90%84%E7%94%BB%E9%9D%A2%E3%81%AEUI?type=design&node-id=41%3A2573&mode=design&t=GgsmpW7AMXCWkRsW-1
+Figma：https://www.figma.com/file/C3glur5TElWMfdBr5OtMs3/%E5%90%84%E7%94%BB%E9%9D%A2%E3%81%AEUI?type=design&node-id=199%3A2&mode=design&t=6Alw5BT3boPytbwV-1
 
 ## ER図
-未更新
-[![ER図](https://i.gyazo.com/d8447657a1dbd4750b45cde6ed6947ea.png)](https://gyazo.com/d8447657a1dbd4750b45cde6ed6947ea)
+[![ER図](https://i.gyazo.com/cc2495d26627e40ca96dbbda0659e4d6.png)](https://gyazo.com/cc2495d26627e40ca96dbbda0659e4d6)
