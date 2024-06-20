@@ -47,14 +47,13 @@
     </div>
   </div>
   
-  <div class="row">
+  <div class="row" style="flex-direction: column-reverse;">
     <% if @vtuber.name_x.present? %>
       <div class="col-xl mb-5">
         <a class="twitter-timeline" data-lang="ja" data-height="700", data-width="500" href="https://twitter.com/<%= @vtuber.name_x %>?ref_src=twsrc%5Etfw">Tweets by <%= @vtuber.name_x %>></a> 
         <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
       </div>
     <% end %>
-
     
     <div class="col-xl">
       <ul class="list-unstyled">
@@ -136,6 +135,33 @@
       <div id="comments-index">
         <%= render 'comments/comments', vtuber: @vtuber %>
       </div>
+    </div>
+  </div>
+</div>
+
+<div class="parent parent1">
+  <div class="text_area">サンプルテキストサンプルテキストサン</div>
+  <div class="img_area">
+    <div class="img">
+      <img src="https://placehold.jp/100x68.png" alt="">
+    </div>
+  </div>
+</div>
+
+<div class="parent parent2">
+  <div class="img_area">
+    <div class="img">
+      <img src="https://placehold.jp/100x68.png" alt="">
+    </div>
+  </div>
+  <div class="text_area">サンプルテキストサンプルテキストサン</div>
+</div>
+
+<div class="parent parent3">
+  <div class="text_area">サンプルテキストサンプルテキストサン</div>
+  <div class="img_area">
+    <div class="img">
+      <img src="https://placehold.jp/100x68.png" alt="">
     </div>
   </div>
 </div>
