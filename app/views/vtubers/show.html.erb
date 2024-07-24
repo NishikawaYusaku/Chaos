@@ -46,38 +46,45 @@
       </div>
     </div>
   </div>
-  
-  <div class="row" style="flex-direction: column-reverse;">
-    <% if @vtuber.name_x.present? %>
-      <div class="col-xl mb-5">
-        <a class="twitter-timeline" data-lang="ja" data-height="700", data-width="500" href="https://twitter.com/<%= @vtuber.name_x %>?ref_src=twsrc%5Etfw">Tweets by <%= @vtuber.name_x %>></a> 
-        <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
-      </div>
-    <% end %>
-    
-    <div class="col-xl">
+
+  <div class="row mt-5 justify-content-center">
+    <div class="col-xl-6 mb-4">
       <ul class="list-unstyled">
         <div class="row justify-content-start">
-          <div class="col-4 ">
-            <li class="text-center">　　　性別：</li>
+          <div class="col-4">
+            <li class="text-end">性別：</li>
           </div>
           <div class="col-8"><%= @vtuber.gender %></div>
         </div>
         <div class="row pt-3 justify-content-start">
           <div class="col-4">
-            <li class="text-center">　　誕生日：</li>
+            <li class="text-end">誕生日：</li>
           </div>
           <div class="col-8"><%= @vtuber.birthday.strftime('%-m / %-d') %></div>
         </div>
         <div class="row pt-3 justify-content-start">
           <div class="col-4">
-            <li class="text-center">デビュー日：</li>
+            <li class="text-end">デビュー日：</li>
           </div>
           <div class="col-8"><%= @vtuber.debut_date.strftime('%Y / %-m / %-d') %></div>
         </div>
+        <% if @youtube_channel %>
+          <div class="row pt-3 justify-content-start">
+            <div class="col-4">
+              <li class="text-end">チャンネル登録者数：</li>
+            </div>
+            <div class="col-8"><%= @youtube_channel[:items][0][:statistics][:subscriber_count].to_formatted_s(:delimited) %>人</div>
+          </div>
+          <div class="row pt-3 justify-content-start">
+            <div class="col-4">
+              <li class="text-end">動画数：</li>
+            </div>
+            <div class="col-8"><%= @youtube_channel[:items][0][:statistics][:video_count].to_formatted_s(:delimited) %></div>
+          </div>
+        <% end %>
         <div class="row pt-3 justify-content-start">
           <div class="col-4">
-            <li class="text-center">　配信内容：</li>
+            <li class="text-end">配信内容：</li>
           </div>
           <div class="col-8">
             <% (@vtuber.contents).each_with_index do |content, index| %>
@@ -88,19 +95,19 @@
         </div>
         <div class="row pt-3 justify-content-start">
           <div class="col-4">
-            <li class="text-center">好きなこと：</li>
+            <li class="text-end">好きなこと：</li>
           </div>
           <div class="col-8"><%= @vtuber.like %></div>
         </div>
         <div class="row pt-3 justify-content-start">
-          <div class="col-4 ">
-            <li class="text-center">嫌いなこと：</li>
+          <div class="col-4">
+            <li class="text-end">嫌いなこと：</li>
           </div>
           <div class="col-8"><%= @vtuber.unlike %></div>
         </div>
         <div class="row pt-3 justify-content-start">
           <div class="col-4">
-            <li class="text-center">　　　タグ：</li>
+            <li class="text-end">タグ：</li>
           </div>
           <div class="col-8">
             <% (@vtuber.tags).each_with_index do |tag, index| %>
@@ -111,7 +118,25 @@
         </div>
       </ul>
     </div>
+  </div>
 
+  <div class="row pt-5">
+    <% if @youtube_video %>
+      <div class="col-xl order-xl-2 pe-xl-5 me-xl-3 mb-5 ">
+        <p>最新動画</p>
+        <div class="ratio ratio-16x9">
+          <iframe src="https://www.youtube.com/embed/<%= @youtube_video[:items][0][:id][:video_id] %>?rel=0" title="YouTube video player" allowfullscreen></iframe>
+        </div>
+        <p class="mt-3"><%= @youtube_video[:items][0][:snippet][:title] %></p>
+      </div>
+    <% end %>
+
+    <% if @vtuber.name_x.present? %>
+      <div class="col-xl mb-5 order-xl-1">
+        <a class="twitter-timeline" data-lang="ja" data-height="700", data-width="500" href="https://twitter.com/<%= @vtuber.name_x %>?ref_src=twsrc%5Etfw">Tweets by <%= @vtuber.name_x %>></a> 
+        <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+      </div>
+    <% end %>
 
   </div>
 </div>
@@ -135,33 +160,6 @@
       <div id="comments-index">
         <%= render 'comments/comments', vtuber: @vtuber %>
       </div>
-    </div>
-  </div>
-</div>
-
-<div class="parent parent1">
-  <div class="text_area">サンプルテキストサンプルテキストサン</div>
-  <div class="img_area">
-    <div class="img">
-      <img src="https://placehold.jp/100x68.png" alt="">
-    </div>
-  </div>
-</div>
-
-<div class="parent parent2">
-  <div class="img_area">
-    <div class="img">
-      <img src="https://placehold.jp/100x68.png" alt="">
-    </div>
-  </div>
-  <div class="text_area">サンプルテキストサンプルテキストサン</div>
-</div>
-
-<div class="parent parent3">
-  <div class="text_area">サンプルテキストサンプルテキストサン</div>
-  <div class="img_area">
-    <div class="img">
-      <img src="https://placehold.jp/100x68.png" alt="">
     </div>
   </div>
 </div>
