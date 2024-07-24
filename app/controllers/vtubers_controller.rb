@@ -1,6 +1,5 @@
 class VtubersController < ApplicationController
   before_action :require_login, except: %i[index show]
-  # before_action :youtube
 
   def index; end
 
@@ -8,6 +7,30 @@ class VtubersController < ApplicationController
     @vtuber = Vtuber.find(params[:id])
     @comment = Comment.new
     @comments = @vtuber.comments
+  
+    place_url = @vtuber.vtuber_places.last.url
+    if place_url.include?("youtube")
+      require 'google/apis/youtube_v3'
+      youtube = Google::Apis::YoutubeV3::YouTubeService.new
+      youtube.key = ENV['GOOGLE_API_KEY']
+
+      if place_url.include?("@")
+        youtube_handle = place_url[place_url.index("@")..-1]
+        youtube_id = Rails.cache.fetch("youtube_handle_to_id_#{youtube_handle}", expires_in: 12.hours) do
+          youtube_handle_to_id = youtube.list_searches("snippet", q: youtube_handle, type: "channel").to_h
+          youtube_handle_to_id[:items][0][:id][:channel_id]
+        end
+      elsif place_url.include?("/UC")
+        youtube_id = place_url[place_url.index("/UC")+1..-1]
+      end
+      
+      @youtube_channel = Rails.cache.fetch("youtube_channel_#{youtube_id}", expires_in: 12.hours) do
+        youtube.list_channels("snippet, statistics", id: youtube_id).to_h
+      end
+      @youtube_video = Rails.cache.fetch("youtube_video_#{youtube_id}", expires_in: 12.hours) do
+        youtube.list_searches("snippet", channel_id: youtube_id, type: 'video', max_results: 1, order: :date).to_h
+      end
+    end
   end
 
   def autocomplete_names
@@ -67,12 +90,6 @@ class VtubersController < ApplicationController
   end
 
   private
-
-  # def youtube
-  #   require 'google/apis/youtube_v3'
-  #   @youtube = Google::Apis::YoutubeV3::YouTubeService.new
-  #   @youtube.key = ENV['GOOGLE_API_KEY']
-  # end
 
   def vtuber_params
     params.require(:vtuber).permit(:name, :name_x, :gender, :birthday, :debut_date, :like, :unlike, :image, vtuber_places_attributes: [:place_id, :url, :_destroy, :id], content_ids: [])
