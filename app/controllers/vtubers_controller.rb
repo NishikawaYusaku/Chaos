@@ -17,7 +17,7 @@ class VtubersController < ApplicationController
       if place_url.include?("@")
         youtube_handle = place_url[place_url.index("@")..-1]
         youtube_id = Rails.cache.fetch("youtube_handle_to_id_#{youtube_handle}", expires_in: 12.hours) do
-          youtube_handle_to_id = youtube.list_searches("snippet", q: youtube_handle, type: "channel").to_h
+          youtube_handle_to_id = youtube.list_searches("snippet", q: youtube_handle, type: "channel", max_results: 1).to_h
           youtube_handle_to_id[:items][0][:id][:channel_id]
         end
       elsif place_url.include?("/UC")
@@ -25,7 +25,7 @@ class VtubersController < ApplicationController
       end
       
       @youtube_channel = Rails.cache.fetch("youtube_channel_#{youtube_id}", expires_in: 12.hours) do
-        youtube.list_channels("snippet, statistics", id: youtube_id).to_h
+        youtube.list_channels("statistics", id: youtube_id).to_h
       end
       @youtube_video = Rails.cache.fetch("youtube_video_#{youtube_id}", expires_in: 12.hours) do
         youtube.list_searches("snippet", channel_id: youtube_id, type: 'video', max_results: 1, order: :date).to_h
