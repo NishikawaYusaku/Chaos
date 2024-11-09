@@ -19,9 +19,12 @@
         <div class="mb-5">
           <%= f.label :gender, "性別", class: "form-label" %>
           <div>
-            <%= f.radio_button :gender, "男性" %>男性　　
-            <%= f.radio_button :gender, "女性" %>女性　　
-            <%= f.radio_button :gender, "その他" %>その他
+            <%= f.radio_button :gender, "男性", id: "gender_male" %>
+            <%= f.label :gender_male, "男性", for: "gender_male" %>　　
+            <%= f.radio_button :gender, "女性", id: "gender_female" %>
+            <%= f.label :gender_female, "女性", for: "gender_female" %>　　
+            <%= f.radio_button :gender, "その他", id: "gender_other" %>
+            <%= f.label :gender_other, "その他", for: "gender_other" %>
           </div>
         </div>
         <div class="mb-5">
