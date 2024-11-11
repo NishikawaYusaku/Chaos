@@ -92,6 +92,6 @@ class VtubersController < ApplicationController
   private
 
   def vtuber_params
-    params.require(:vtuber).permit(:name, :name_x, :gender, :birthday, :debut_date, :like, :unlike, :image, vtuber_places_attributes: [:place_id, :url, :_destroy, :id], content_ids: [])
+    params.require(:vtuber).permit(:name, :affiliation, :name_x, :gender, :birthday, :debut_date, :like, :unlike, :image, vtuber_places_attributes: [:place_id, :url, :_destroy, :id], content_ids: [])
   end
 end
