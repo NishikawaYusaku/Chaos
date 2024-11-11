@@ -20,10 +20,11 @@
 //= require turbolinks
 //= require preview
 //= require comment
+//= require affiliation
 
-$(document).on('turbolinks:load', function() {
-  $('#name-setting').autocomplete({
-    source: '/vtubers/autocomplete_names',
+$(document).on("turbolinks:load", function () {
+  $("#name-setting").autocomplete({
+    source: "/vtubers/autocomplete_names",
     minLength: 2,
     // open: function() {
     //   // サジェストボックスの幅を設定
