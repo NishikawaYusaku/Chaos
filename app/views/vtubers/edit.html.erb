@@ -12,8 +12,10 @@
         <div class="mb-5">
           <%= f.label :affiliation, "所属", class: "form-label" %>
           <div>
-            <%= f.radio_button :affiliation, "個人", checked: @vtuber.affiliation == "個人", id: "affiliation_individual" %> 個人　　
-            <%= f.radio_button :affiliation, "", id: "affiliation_company", checked: @vtuber.affiliation != "個人" %> 企業（グループなど）　　
+            <%= f.radio_button :affiliation, "個人", checked: @vtuber.affiliation == "個人", id: "affiliation_individual" %>
+            <%= f.label :affiliation_individual, "個人", for: "affiliation_individual" %>　　
+            <%= f.radio_button :affiliation, "", id: "affiliation_company", checked: @vtuber.affiliation != "個人" %>
+            <%= f.label :affiliation_company, "企業（グループなど）", for: "affiliation_company" %>　　
             <%= f.text_field :affiliation, id: "affiliation_name", placeholder: "企業 / グループ名", class: "mt-2 form-control", value: @vtuber.affiliation != "個人" ? @vtuber.affiliation : "", style: @vtuber.affiliation != "個人" ? "" : "display: none;" %>
           </div>
         </div>
