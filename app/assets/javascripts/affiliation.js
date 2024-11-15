@@ -3,7 +3,16 @@ document.addEventListener("turbolinks:load", function() {
   const affiliationCompany = document.getElementById("affiliation_company");
   const affiliationNameField = document.getElementById("affiliation_name");
 
-  affiliationCompany.checked = false;
+  if (affiliationNameField.value === "") {
+    affiliationCompany.checked = false;
+  }
+  
+  // 「企業（グループなど）」がチェックされている場合、テキストボックスを表示
+  if (affiliationCompany.checked) {
+    affiliationNameField.style.display = "block";
+  } else {
+    affiliationNameField.style.display = "none";
+  }
 
   // 「企業（グループなど）」を選択するとテキストフィールドを表示
   affiliationCompany.addEventListener("change", function() {
