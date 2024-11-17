@@ -15,7 +15,7 @@ class ApplicationController < ActionController::Base
       @vtubers = @q.order(:id).page(params[:page]).per(20)
       @tag_name = params[:tag]
     else
-      @query = { name_or_gender_or_like_or_unlike_or_contents_name_or_places_name_or_tags_name_cont: params[:q] }
+      @query = { name_or_affiliation_or_gender_or_like_or_unlike_or_contents_name_or_places_name_or_tags_name_cont: params[:q] }
       @q = Vtuber.ransack(@query)
       @vtubers = @q.result(distinct: true).order(:id).page(params[:page]).per(20)
     end

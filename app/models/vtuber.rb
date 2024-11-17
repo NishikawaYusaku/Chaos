@@ -3,7 +3,7 @@ class Vtuber < ApplicationRecord
   mount_uploader :image, ImageUploader
 
   def self.ransackable_attributes(auth_object = nil)
-    ["name", "gender", "like", "unlike"]
+    ["name", "affiliation", "gender", "like", "unlike"]
   end
 
   def self.ransackable_associations(auth_object = nil)
