@@ -52,6 +52,12 @@
       <ul class="list-unstyled">
         <div class="row justify-content-start">
           <div class="col-4">
+            <li class="text-end">所属：</li>
+          </div>
+          <div class="col-8"><%= @vtuber.affiliation %></div>
+        </div>
+        <div class="row pt-3 justify-content-start">
+          <div class="col-4">
             <li class="text-end">性別：</li>
           </div>
           <div class="col-8"><%= @vtuber.gender %></div>
@@ -122,7 +128,7 @@
 
   <div class="row pt-5">
     <% if @youtube_video %>
-      <div class="col-xl order-xl-2 pe-xl-5 me-xl-3 mb-5 ">
+      <div class="mb-5">
         <p>最新動画</p>
         <div class="ratio ratio-16x9">
           <iframe src="https://www.youtube.com/embed/<%= @youtube_video[:items][0][:id][:video_id] %>?rel=0" title="YouTube video player" allowfullscreen></iframe>
