@@ -3,6 +3,10 @@ document.addEventListener("turbolinks:load", function() {
   const affiliationCompany = document.getElementById("affiliation_company");
   const affiliationNameField = document.getElementById("affiliation_name");
 
+  if (!affiliationNameField) {
+    return;
+  }
+
   if (affiliationNameField.value === "") {
     affiliationCompany.checked = false;
   }

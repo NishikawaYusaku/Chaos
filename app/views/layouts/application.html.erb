@@ -26,7 +26,8 @@
 
   <body>
     <div class="footerFixed">
-      <header>
+      <header class="position-sticky top-0" style="z-index: 1051;">
+      <!-- <header> -->
         <% if logged_in? %>
           <%= render 'shared/after_login_header' %>
         <% else %>
