@@ -77,7 +77,7 @@
         <% if @youtube_channel %>
           <div class="row pt-3 justify-content-start">
             <div class="col-4">
-              <li class="text-end">チャンネル登録者数：</li>
+              <li class="text-end">ch登録者数：</li>
             </div>
             <div class="col-8"><%= @youtube_channel[:items][0][:statistics][:subscriber_count].to_formatted_s(:delimited) %>人</div>
           </div>
